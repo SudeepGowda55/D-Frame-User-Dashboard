@@ -60,7 +60,7 @@ const App = () => {
   return (
     <UserContext.Provider value={user}>
       <Router>
-      {user.isLoggedIn ?      
+      {/* {user.isLoggedIn ?       */}
         <Switch>
           <Route exact path="/"><Authenticate setStatus={setUser} /></Route>
           <PrivateRoute path="/Profile" component={Profile} />
@@ -78,10 +78,11 @@ const App = () => {
           <PrivateRoute path="/SiteByTime" component={SiteByTime} />
           <PrivateRoute path="/SiteDistribution" component={SiteDistribution} />
           <PrivateRoute path="/Monetisation" component={Monetisation} />
-        </Switch> : <Route exact path="/">
+        </Switch> 
+        {/* : <Route exact path="/">
             <Authenticate setStatus={setUser} />
-          </Route>
-        }
+          </Route> */}
+        {/* } */}
       </Router>
     </UserContext.Provider>
   );
