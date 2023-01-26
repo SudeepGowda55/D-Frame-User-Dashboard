@@ -60,14 +60,14 @@ const TopSiteVisited = () => {
       <div className='absolute top-[27vh] rounded-2xl right-[10vw] bg-white space-y-3 '>
       <div className="flex flex-col px-[45px] py-1 mb-1">
           {data.map(({name,value},i)=>{
-             return <div className='flex mt-2.5 justify-left text-2xl flex-row'><input style={{height:"20px",width:"17px",background:COLORS[i],border:"white",margin:"7px 5px", borderRadius:"5px"}}/>{name}</div>
+             return <div key={i} className='flex mt-2.5 justify-left text-2xl flex-row'><input style={{height:"20px",width:"17px",background:COLORS[i],border:"white",margin:"7px 5px", borderRadius:"5px"}}/>{name}</div>
           })}
       </div>
       </div>
       <div className='absolute w-[50vw] overflow-auto h-[29vh] border rounded-t-3xl bg-white space-y-3 top-[68vh] left-[30vw]'>
             {data.map(({name,value},i)=>{
              return ( 
-              <div className='flex flex-row justify-between ml-16 mr-10 text-xl'>
+              <div key={i} className='flex flex-row justify-between ml-16 mr-10 text-xl'>
               <div className='m-[5px] mt-7 text-[28px]'><input style={{height:"25px",width:"20px",background:COLORS[i],border:"white",margin:"0 5px", borderRadius:"5px"}}/>{name}</div>
               <div className='flex mt-7 text-2xl flex-row'><h1><span style={{color:"#3a6198", fontWeight:500}}>{value} times</span></h1> <h1 className=' px-6 text-red-600 text-[2vh]'>❌</h1></div>
               </div>

@@ -18,8 +18,6 @@ const BrowserData = () => {
     });
   }, [])
 
-  console.log(elementData)
-
   return (
     <div className="w-[100vw] p-0 m-0 h-[100vh]">
       <div className="w-[16.2vw]">

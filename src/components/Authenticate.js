@@ -1,9 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useHistory } from 'react-router-dom';
 import { loginUser } from '../services/magic';
 import React, { useState } from "react";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import { FormControl, FormControlLabel, FormGroup, Checkbox, OutlinedInput} from "@mui/material";
 import styles from "./Authenticate.module.css";
 import Navbar from './Navbar/Navbar';
 import dFrameHero from "../assets/Images/d-frame-hero.png";
@@ -59,9 +57,8 @@ const Authenticate = ({ setStatus }) => {
       }}
     >
       <Navbar />
-      <Stack
-        spacing={2}
-        direction="row"
+      <div
+        
         style={{
           display: "flex",
           justifyContent: "center",
@@ -91,19 +88,21 @@ const Authenticate = ({ setStatus }) => {
           >
             <span className={styles.formHeading}>Create Your Account</span>
 
-            <FormControl sx={{ color: "white", width: "100%" }}>
-              <OutlinedInput
+            <form style={{ color: "white" }}>
+              <input
                 placeholder="Enter your email"
                 value={email}
+		className="w-[16vw] ml-[-2vw]"
                 onChange={handleChange}
-                sx={{ color: "white", border: "1px solid white" }}
+                style={{ color: "black", border: "1px solid white" , padding:'1rem'}}
               />
-            </FormControl>
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    sx={{
+
+            </form>
+            
+              
+                <div className="ml-[-2vw]" style={{display:'flex'}}>
+                  <input type='checkbox'
+                    style={{
                       color: "#49c0f3",
                       "&.Mui-checked": {
                         color: "#49c0f3",
@@ -111,17 +110,16 @@ const Authenticate = ({ setStatus }) => {
                     }}
                     onChange={handleCheckboxChange}
                   />
-                }
-                label= "I agree to all the Terms and Conditions."
-                style={{ color: "white" }}
-              />
-            </FormGroup>
-            <Button variant="contained" onClick={handleSubmit}>
+               <label style={{color:'whitesmoke', paddingLeft:'1rem'}}>I agree to all terms and conditions</label>
+               </div>
+              
+            
+            <button className="ml-[-2vw] rounded-md bg-blue-700" style={{color:'white', padding:'0.5rem 1rem'}} onClick={handleSubmit}>
               Sign In
-            </Button>
+            </button>
           </div>
         </div>
-      </Stack>
+      </div>
     </div>
   );
 };
