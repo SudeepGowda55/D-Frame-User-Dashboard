@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import styles from "./Navbar.module.css";
 import dFrameLogo from "../../assets/Images/d-frame-logo.png";
-import Button from "@mui/material/Button";
+
 
 const Navbar = (props) => {
   return (
@@ -14,17 +15,18 @@ const Navbar = (props) => {
         <span className={styles.name}>D Frame</span>
       </div>
       {/*Adding  an onClick event to the button with the signOut function.*/}
+      
       {props.signOut && (
         /*Creating a new button with the className of signOutButton and the variant of contained. */
-        <Button
+        <button
           className={styles.signOutButton}
-          variant="contained"
+          
           onClick={props.signOut}
           //Adding a marginRight of 2rem to the button
-          sx={{ marginRight: "2rem" }}
+          style={{ marginRight: "2rem" }}
         >
           Sign Out
-        </Button>
+        </button>
       )}
     </div>
   );
