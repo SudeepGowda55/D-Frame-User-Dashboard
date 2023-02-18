@@ -5,7 +5,7 @@ run-as: ubuntu
 phases:
   install:
     runtime-versions:
-      nodejs: 18.x
+      nodejs: latest
   pre_build:
     commands:
       - npm install
