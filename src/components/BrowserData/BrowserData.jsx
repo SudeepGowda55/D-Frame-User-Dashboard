@@ -4,15 +4,14 @@ import { Sidebar } from "../Sidebar/Sidebar";
 
 const BrowserData = () => {
 
-  const [elementData, setElementData] = useState([])
+  const [eventData, setEventData] = useState({})
+
   useEffect(() => {
     window.addEventListener("message", function (event) {
-      if (event.source == window &&
-        event.data.direction &&
-        event.data.direction == "from-content-script") {
+      if (event.source == window && event.data.direction && event.data.direction == "from-content-script") {
         // alert("Page script received message: \"" + event.data.message + "\"");
         if (event.data.message != null || undefined) {
-          setElementData(Object.keys(event.data.message).map((key) => key))
+          setEventData(event.data.message)
         }
       }
     });
@@ -40,9 +39,16 @@ const BrowserData = () => {
             <div className='flex flex-row '>
               {/* <p className='px-[5vw] text-[2.65vh] flex flex-row'><span>{Object.keys(eventData).map((item, i) => (<p key={i}>You have spent <span>{Math.floor((eventData[item].time_on_site) / 1000)}</span> seconds on {item.slice(0, 25)} webpage</p>))}</span><span className='flex flex-col'>{Object.keys(eventData).map(() => (<span className='px-24 text-red-500 text-2xl'>X</span>))}</span></p> */}
               <p className='px-[5vw] text-[2.65vh] flex flex-row'>
-                <span>
-                  {elementData.map((webData, i) => (<div key={i} className="flex flex-row"><p className='w-[40vw] ml-[6vw]'> You have Browsed {webData} website </p><p className=' text-red-500 inline text-2xl'>X</p></div>))}
-                </span></p>
+                {eventData != null ?
+                  <span>
+                    {Object.keys(eventData).map((key) => ( <div key={key} className="flex flex-row"><p className='w-full ml-[5vw]'>You Visited {key} website on {new Date(eventData[key].timeStamp).toLocaleString()} </p> </div>))}
+                  </span>
+                  :
+                  <p>
+                    Your Broswing History will be displayed soon
+                  </p>
+                }
+              </p>
             </div>
           </div>
         </div>
