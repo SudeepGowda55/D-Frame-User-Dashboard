@@ -8,7 +8,7 @@ const BrowserData = () => {
 
   useEffect(() => {
     window.addEventListener("message", function (event) {
-      if (event.source == window && event.data.direction && event.data.direction == "from-content-script") {
+      if (event.source === window && event.data.direction && event.data.direction === "from-content-script") {
         // alert("Page script received message: \"" + event.data.message + "\"");
         if (event.data.message != null || undefined) {
           setEventData(event.data.message)
@@ -41,7 +41,7 @@ const BrowserData = () => {
               <p className='px-[5vw] text-[2.65vh] flex flex-row'>
                 {eventData != null ?
                   <span>
-                    {Object.keys(eventData).map((key) => ( <div key={key} className="flex flex-row"><p className='w-full ml-[5vw]'>You Visited {key} website on {new Date(eventData[key].timeStamp).toLocaleString()} </p> </div>))}
+                    {Object.keys(eventData).map((key) => ( <div key={key} className="flex flex-row"><p className='w-full ml-[5vw]'>You visited {key} website on {new Date(eventData[key].timeStamp).toLocaleString()}. </p> </div>))}
                   </span>
                   :
                   <p>
